@@ -1,0 +1,60 @@
+window.COURSE = { modules: [] };
+
+COURSE.setup = {
+  intro: 'Tick each item as you go. Use a <b>personal Developer Edition org</b> and free accounts, so you can break things safely. Students should finish this before Day 1.',
+  items: [
+    ['Salesforce Developer Edition org (x2)', 'Sign up at <a href="https://developer.salesforce.com/signup" target="_blank">developer.salesforce.com/signup</a>. One org will act as "Dev", the other as "Prod". Also enable <b>Dev Hub</b> in one of them (Setup → Dev Hub).'],
+    ['Git', 'Install from <a href="https://git-scm.com" target="_blank">git-scm.com</a>, then configure your identity.', 'git config --global user.name "Your Name"\ngit config --global user.email "you@example.com"\ngit config --global init.defaultBranch main'],
+    ['Node.js LTS + Salesforce CLI', 'Install Node.js LTS from <a href="https://nodejs.org" target="_blank">nodejs.org</a>, then install the CLI.', 'npm install --global @salesforce/cli\nsf --version\nsf plugins install code-analyzer      # used from Day 22\nsf plugins install sfdx-git-delta     # used from Day 25'],
+    ['VS Code + Salesforce Extension Pack', 'Install VS Code and the "Salesforce Extension Pack (Expanded)" extension.'],
+    ['GitHub account', 'Free account at <a href="https://github.com" target="_blank">github.com</a>. GitHub Actions minutes are free for public repos.'],
+    ['Azure DevOps organization', 'Free at <a href="https://dev.azure.com" target="_blank">dev.azure.com</a>. Request the free parallel job grant for private projects (it can take 2–3 business days, so do it early!).'],
+    ['OpenSSL', 'Bundled with Git for Windows (Git Bash). Used to create the certificate for JWT authentication.', 'openssl version'],
+    ['Copado trial (Module 7)', 'Request a Copado trial or Trailhead Playground with Copado from copado.com (optional; you can follow the demos without it).']
+  ]
+};
+
+COURSE.glossary = [
+  ['DevOps', 'A way of working where the people who build software and the people who release it work as one team, using automation so changes reach users quickly and safely.'],
+  ['Org', 'A single Salesforce environment (like a separate copy of the Salesforce app) with its own data, users and configuration.'],
+  ['Sandbox', 'A copy of your production org used for building and testing, so mistakes do not affect real users.'],
+  ['Scratch org', 'A short-lived, disposable org created from a config file. Think of it as a "clean whiteboard" you wipe after use.'],
+  ['Metadata', 'The configuration that defines your app: objects, fields, flows, Apex, layouts. Data is the records; metadata is the shape of the app.'],
+  ['Change set', 'Salesforce\'s built-in, click-based way to move metadata between connected orgs. Simple, but manual and hard to repeat.'],
+  ['Git', 'A tool that records every version of your files, so you can see who changed what and go back in time.'],
+  ['Repository (repo)', 'A project folder tracked by Git, including its full history.'],
+  ['Commit', 'A saved snapshot of changes with a message describing why they were made.'],
+  ['Branch', 'A parallel line of work. You can experiment on a branch without disturbing the main version.'],
+  ['Merge', 'Combining the changes from one branch into another.'],
+  ['Pull Request (PR)', 'A request to merge a branch, where teammates review the change and automated checks run first.'],
+  ['Merge conflict', 'When two people changed the same lines differently, so Git needs a human to decide which version to keep.'],
+  ['CI (Continuous Integration)', 'Automatically building and testing every change as soon as it is pushed.'],
+  ['CD (Continuous Delivery/Deployment)', 'Automatically getting tested changes ready for (or into) production.'],
+  ['Pipeline', 'An automated assembly line of steps (validate, test, deploy) that each change goes through.'],
+  ['Salesforce CLI (sf)', 'A command-line tool to log in to orgs, retrieve and deploy metadata, run tests and create scratch orgs.'],
+  ['package.xml (manifest)', 'A list of the metadata components you want to retrieve or deploy.'],
+  ['Destructive changes', 'A manifest listing components to <b>delete</b> from the target org.'],
+  ['Validation (check-only deploy)', 'A deployment dry-run: everything is checked and tests run, but nothing is saved.'],
+  ['Quick deploy', 'Deploying a recently validated package without re-running tests, which makes release-night deployments much faster.'],
+  ['Code coverage', 'The percentage of Apex code lines executed by tests. Production deploys need at least 75%.'],
+  ['JWT auth', 'A way for a robot (pipeline) to log in to Salesforce using a certificate instead of a password.'],
+  ['Connected App / External Client App', 'A Salesforce configuration that lets external tools (like a pipeline) connect securely through OAuth.'],
+  ['Dev Hub', 'The org that owns and creates your scratch orgs and packages.'],
+  ['Unlocked package', 'A versioned bundle of metadata you can install, upgrade and roll back, like an app from an app store.'],
+  ['Delta deployment', 'Deploying only what changed between two Git commits instead of everything.'],
+  ['Static code analysis', 'Automatically scanning code for bugs, security issues and bad practices without running it (e.g., Salesforce Code Analyzer/PMD).'],
+  ['GitHub Actions', 'GitHub\'s built-in automation service that runs workflows (YAML files) on events like push or pull request.'],
+  ['Azure DevOps (ADO)', 'Microsoft\'s suite for planning (Boards), code (Repos), automation (Pipelines), testing and packages (Artifacts).'],
+  ['YAML', 'A human-readable text format used to describe pipelines. Indentation matters!'],
+  ['Runner / Agent', 'The machine that actually executes pipeline steps.'],
+  ['Secret / Secure file', 'Encrypted values (passwords, keys) stored in the CI tool, never in code.'],
+  ['Service connection', 'In Azure DevOps, a saved, secure link to an external system.'],
+  ['Environment (CI)', 'A named deployment target (e.g., UAT, Prod) that can require approvals before a pipeline deploys to it.'],
+  ['Copado', 'A Salesforce-native DevOps platform with user stories, pipelines and promotions managed through clicks.'],
+  ['DevOps Center', 'Salesforce\'s free, built-in tool for managing work items and promoting changes through a pipeline using Git under the hood.'],
+  ['Back-promotion', 'Copying changes that reached a higher environment back down to lower environments so they stay in sync.'],
+  ['Hotfix', 'An urgent fix applied to production outside the normal release cycle.'],
+  ['Rollback', 'Undoing a deployment to return to the previous working state.'],
+  ['Shift left', 'Finding problems earlier (on the developer\'s machine or in the PR) where they are cheaper to fix.'],
+  ['DORA metrics', 'Four measures of DevOps performance: deployment frequency, lead time for changes, change failure rate and time to restore service.']
+];

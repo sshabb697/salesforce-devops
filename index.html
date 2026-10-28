@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salesforce DevOps Mastery — 60 Day Course</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+    <a href="#home" class="brand">☁️ <span>Salesforce DevOps Mastery</span> <small>60 Days</small></a>
+    <div class="top-actions">
+      <input id="search" type="search" placeholder="Search lessons…" />
+      <label class="toggle" title="Show teaching notes, timings and discussion prompts">
+        <input type="checkbox" id="trainerToggle" /> <span>Trainer mode</span>
+      </label>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">🌓</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar" id="sidebar">
+      <div class="progress-card">
+        <div class="progress-label"><span>Your progress</span><b id="progressPct">0%</b></div>
+        <div class="progress-bar"><div id="progressFill"></div></div>
+        <div class="side-links">
+          <a href="#home">🏠 Home</a>
+          <a href="#glossary">📖 Glossary</a>
+          <a href="#setup">🧰 Setup</a>
+        </div>
+      </div>
+      <div id="moduleNav"></div>
+    </nav>
+    <main id="main" class="content"></main>
+  </div>
+
+  <script src="data/glossary.js"></script>
+  <script src="data/module1-foundations.js"></script>
+  <script src="data/module2-git.js"></script>
+  <script src="data/module3-sfcli.js"></script>
+  <script src="data/module4-quality.js"></script>
+  <script src="data/module5-github-actions.js"></script>
+  <script src="data/module6-azure-devops.js"></script>
+  <script src="data/module7-copado-devopscenter.js"></script>
+  <script src="data/module8-advanced-capstone.js"></script>
+  <script src="assets/app.js"></script>
+  <script type="module">
+    try {
+      const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+      mermaid.initialize({ startOnLoad: false, theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'default', securityLevel: 'loose' });
+      window.mermaid = mermaid;
+      window.dispatchEvent(new Event('mermaid-ready'));
+    } catch (e) {
+      window.dispatchEvent(new Event('mermaid-failed'));
+    }
+  </script>
+</body>
+</html>

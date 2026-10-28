@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" role="img" aria-labelledby="title desc">
+  <title id="title">Git Workflow</title>
+  <desc id="desc">Working Directory, Staging Area, Local Repository and Remote Repository with Git commands between them.</desc>
+  <defs>
+    <style>
+      .title { font: 700 28px Segoe UI, Arial, sans-serif; fill: #1b2436; }
+      .sub { font: 600 14px Segoe UI, Arial, sans-serif; fill: #5d6b82; }
+      .h { font: 700 15px Segoe UI, Arial, sans-serif; fill: #1b2436; }
+      .p { font: 12px Segoe UI, Arial, sans-serif; fill: #5d6b82; }
+      .cmd { font: 700 12px Consolas, monospace; fill: #fff; }
+      .panel-label { font: 700 13px Segoe UI, Arial, sans-serif; fill: #fff; letter-spacing: .04em; }
+      .note { font: 12px Segoe UI, Arial, sans-serif; fill: #0b5cab; }
+    </style>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/>
+    </marker>
+  </defs>
+
+  <rect width="1100" height="720" fill="#f5f7fb"/>
+  <text x="40" y="42" class="title">Git Workflow</text>
+  <text x="40" y="66" class="sub">Four places your Salesforce metadata can live  and the commands that move it</text>
+
+  <!-- Local / Remote panels -->
+  <rect x="24" y="90" width="700" height="560" rx="18" fill="#e8f6ee" stroke="#9ad0b0"/>
+  <rect x="24" y="90" width="700" height="36" rx="18" fill="#2e844a"/>
+  <rect x="24" y="108" width="700" height="18" fill="#2e844a"/>
+  <text x="40" y="114" class="panel-label">LOCAL (your laptop)</text>
+
+  <rect x="740" y="90" width="336" height="560" rx="18" fill="#e7f1fb" stroke="#9ec2e8"/>
+  <rect x="740" y="90" width="336" height="36" rx="18" fill="#0b5cab"/>
+  <rect x="740" y="108" width="336" height="18" fill="#0b5cab"/>
+  <text x="756" y="114" class="panel-label">REMOTE (GitHub / Azure Repos)</text>
+
+  <!-- Boxes -->
+  <g id="working">
+    <rect x="48" y="160" width="190" height="100" rx="12" fill="#fff" stroke="#f5a623" stroke-width="2"/>
+    <rect x="48" y="160" width="190" height="28" rx="12" fill="#f5a623"/>
+    <rect x="48" y="174" width="190" height="14" fill="#f5a623"/>
+    <text x="62" y="180" class="panel-label">Working Directory</text>
+    <text x="62" y="210" class="p">Untracked &amp; modified files</text>
+    <text x="62" y="230" class="p">VS Code edits · sf retrieve</text>
+  </g>
+
+  <g id="staging">
+    <rect x="290" y="160" width="190" height="100" rx="12" fill="#fff" stroke="#7aa2c8" stroke-width="2"/>
+    <rect x="290" y="160" width="190" height="28" rx="12" fill="#5b8db8"/>
+    <rect x="290" y="174" width="190" height="14" fill="#5b8db8"/>
+    <text x="304" y="180" class="panel-label">Staging Area</text>
+    <text x="304" y="210" class="p">Files prepared for commit</text>
+    <text x="304" y="230" class="p">Your next snapshot basket</text>
+  </g>
+
+  <g id="localrepo">
+    <rect x="532" y="160" width="170" height="100" rx="12" fill="#fff" stroke="#6aa84f" stroke-width="2"/>
+    <rect x="532" y="160" width="170" height="28" rx="12" fill="#2e844a"/>
+    <rect x="532" y="174" width="170" height="14" fill="#2e844a"/>
+    <text x="546" y="180" class="panel-label">Local Repository</text>
+    <text x="546" y="210" class="p">History on your machine</text>
+    <text x="546" y="230" class="p">.git folder · commits</text>
+  </g>
+
+  <g id="remote">
+    <rect x="780" y="160" width="260" height="100" rx="12" fill="#fff" stroke="#0b5cab" stroke-width="2"/>
+    <rect x="780" y="160" width="260" height="28" rx="12" fill="#0b5cab"/>
+    <rect x="780" y="174" width="260" height="14" fill="#0b5cab"/>
+    <text x="794" y="180" class="panel-label">Remote Repository</text>
+    <text x="794" y="210" class="p">Shared history with the team</text>
+    <text x="794" y="230" class="p">origin/main · PRs start here</text>
+  </g>
+
+  <!-- Saving changes row -->
+  <text x="48" y="300" class="h" fill="#c47a00">Saving changes</text>
+  <line x1="238" y1="210" x2="285" y2="210" stroke="#e69138" stroke-width="3" marker-end="url(#arr)"/>
+  <rect x="235" y="268" width="70" height="24" rx="6" fill="#e69138"/><text x="246" y="284" class="cmd">git add</text>
+  <line x1="480" y1="210" x2="527" y2="210" stroke="#e69138" stroke-width="3" marker-end="url(#arr)"/>
+  <rect x="470" y="268" width="95" height="24" rx="6" fill="#e69138"/><text x="480" y="284" class="cmd">git commit</text>
+  <path d="M702 210 H760" stroke="#e69138" stroke-width="3" marker-end="url(#arr)"/>
+  <rect x="700" y="268" width="80" height="24" rx="6" fill="#e69138"/><text x="714" y="284" class="cmd">git push</text>
+
+  <!-- Create local repo -->
+  <text x="48" y="340" class="h" fill="#0b5cab">Create local repo from remote</text>
+  <path d="M780 270 C780 320, 620 320, 620 260" fill="none" stroke="#0b5cab" stroke-width="3" marker-end="url(#arr)"/>
+  <rect x="680" y="318" width="85" height="24" rx="6" fill="#0b5cab"/><text x="692" y="334" class="cmd">git clone</text>
+  <path d="M532 270 C480 330, 200 330, 160 260" fill="none" stroke="#0b5cab" stroke-width="2.5" marker-end="url(#arr)"/>
+  <rect x="300" y="318" width="150" height="24" rx="6" fill="#0b5cab"/><text x="312" y="334" class="cmd">git switch / checkout</text>
+
+  <!-- Undo -->
+  <text x="48" y="390" class="h" fill="#2e844a">Undo (before commit)</text>
+  <path d="M290 250 C250 300, 180 300, 160 260" fill="none" stroke="#2e844a" stroke-width="2.5" marker-end="url(#arr)"/>
+  <rect x="175" y="368" width="150" height="24" rx="6" fill="#2e844a"/><text x="188" y="384" class="cmd">git restore / reset</text>
+
+  <!-- Getting changes -->
+  <text x="48" y="440" class="h" fill="#6a3d9a">Getting changes from remote</text>
+  <path d="M780 250 C760 400, 650 400, 620 260" fill="none" stroke="#6a3d9a" stroke-width="3" marker-end="url(#arr)"/>
+  <rect x="700" y="418" width="85" height="24" rx="6" fill="#6a3d9a"/><text x="714" y="434" class="cmd">git fetch</text>
+  <path d="M532 260 C480 420, 220 420, 160 260" fill="none" stroke="#6a3d9a" stroke-width="2.5" marker-end="url(#arr)"/>
+  <rect x="300" y="418" width="90" height="24" rx="6" fill="#6a3d9a"/><text x="314" y="434" class="cmd">git merge</text>
+  <path d="M900 260 C900 470, 140 470, 140 260" fill="none" stroke="#9b59b6" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arr)"/>
+  <rect x="480" y="458" width="200" height="24" rx="6" fill="#9b59b6"/><text x="500" y="474" class="cmd">git pull  = fetch + merge</text>
+
+  <!-- Stash -->
+  <rect x="48" y="520" width="200" height="90" rx="12" fill="#fff5fb" stroke="#d48bb8" stroke-width="2"/>
+  <text x="62" y="548" class="h">Stash (temporary shelf)</text>
+  <text x="62" y="568" class="p">Park unfinished work</text>
+  <rect x="62" y="578" width="80" height="22" rx="6" fill="#c76b9e"/><text x="72" y="593" class="cmd">git stash</text>
+  <path d="M148 210 C100 250, 100 500, 148 520" fill="none" stroke="#c76b9e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Salesforce note -->
+  <rect x="280" y="520" width="756" height="90" rx="12" fill="#fff" stroke="#1b96ff" stroke-width="2"/>
+  <text x="300" y="548" class="h" fill="#0b5cab">Salesforce tip</text>
+  <text x="300" y="572" class="note">Working Directory = force-app/ files after <tspan font-weight="700">sf project retrieve</tspan> from a sandbox.</text>
+  <text x="300" y="592" class="note">Remote Repository = source of truth. Pipelines <tspan font-weight="700">git pull</tspan> then <tspan font-weight="700">sf project deploy</tspan> to QA/UAT/Prod.</text>
+
+  <text x="40" y="690" class="sub">Classroom poster · Salesforce DevOps Mastery</text>
+</svg>
