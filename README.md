@@ -1,18 +1,48 @@
 # Salesforce DevOps Mastery — 60 Day Interactive Course
 
-An offline-friendly, interactive course for Salesforce professionals with ~5 years of experience. Each of the 60 days has:
+Interactive course for Salesforce professionals (~5 years experience). Each of the 60 days has objectives, a plain-English analogy, diagrams/images, concepts + code, a quiz, a lab, and trainer notes.
 
-- 🎯 Learning objectives
-- 💡 A plain-English analogy for non-technical learners
-- 🖼️ A visual diagram (flowcharts, sequence diagrams, git graphs)
-- 🧠 Key concepts, real-world pitfalls and copy-paste code
-- ❓ A quiz with instant feedback
-- 🧪 A hands-on lab with a step checklist, a way to verify it and a stretch challenge
-- 👩‍🏫 Trainer notes (toggle **Trainer mode**) and a personal notes box
+Progress, quiz answers, lab checkboxes and notes are saved in each student's browser (localStorage).
 
-Progress, quiz answers, lab checkboxes and notes are saved in the browser (localStorage).
+---
 
-## Run it
+## Share with students (recommended)
+
+Students open a normal browser link — **no install, no `serve.ps1`**.
+
+**Course URL (after Pages is enabled):**  
+https://sshabb697.github.io/salesforce-devops/
+
+**Source repo:**  
+https://github.com/sshabb697/salesforce-devops
+
+### One-time setup (instructor)
+
+1. Make the repo **Public** (Settings → General → Danger Zone → Change visibility), *or* keep it Private if you have GitHub Pro/Team and grant students read access.
+2. Settings → **Pages** → Build and deployment → Source: **GitHub Actions**.
+3. Push to `main` (or run the **Deploy course site** workflow under Actions).
+4. Wait 1–2 minutes, then open the Course URL above.
+5. Share that URL (and optionally Day deep-links like `…/salesforce-devops/#day-6`) in your classroom chat.
+
+### How you present in class
+
+1. Open the Course URL on the projector.
+2. Turn on **Trainer mode** (top right) for timings and discussion prompts.
+3. Students open the **same URL** on their laptops and follow along (their progress is stored only in their browser).
+
+### Update the course after you edit lessons
+
+```powershell
+git add -A
+git commit -m "Update course content"
+git push origin main
+```
+
+GitHub Actions republishes the site automatically. Refresh the Course URL after the workflow is green.
+
+---
+
+## Run locally (optional)
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File serve.ps1
@@ -20,7 +50,7 @@ powershell -ExecutionPolicy Bypass -File serve.ps1
 powershell -ExecutionPolicy Bypass -File serve.ps1 -Port 8088
 ```
 
-This opens http://localhost:8080 (or the port you chose). Mermaid diagrams need internet once; lesson images under `assets/images/` work offline.
+Mermaid diagrams need internet once; images under `assets/images/` work offline.
 
 ## Syllabus (12 weeks × 5 sessions)
 
@@ -37,4 +67,4 @@ This opens http://localhost:8080 (or the port you chose). Mermaid diagrams need 
 
 ## Editing content
 
-All lesson content lives in `data/*.js`, one file per module. Each day is a plain object (`t`, `obj`, `analogy`, `diagram`, `concepts`, `code`, `quiz`, `lab`, `teach`), so you can add or reorder days without touching the app code in `assets/app.js`. Diagrams use [Mermaid](https://mermaid.js.org) syntax. Inside code template literals, write GitHub/Azure expressions as `\${{ ... }}`.
+All lesson content lives in `data/*.js`, one file per module. Each day is a plain object (`t`, `obj`, `analogy`, `diagram`, `concepts`, `code`, `quiz`, `lab`, `teach`). Diagrams use [Mermaid](https://mermaid.js.org). Inside code template literals, write GitHub/Azure expressions as `\${{ ... }}`.

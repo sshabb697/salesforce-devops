@@ -93,6 +93,10 @@
         <b>Azure DevOps</b>, <b>Copado</b> and <b>DevOps Center</b>.</p>
         <a class="btn" href="#day-${next.n}">${state.done.d1 ? '▶ Continue: Day ' + next.n : '▶ Start Day 1'}</a>
         <a class="btn" style="margin-left:8px" href="#setup">🧰 Setup checklist</a>
+        <div class="callout info" style="margin-top:16px;background:rgba(255,255,255,.12);border-left-color:#fff;color:#fff">
+          📤 <b>Students:</b> bookmark this page — no install needed. Progress stays in your browser.
+          Instructors: push to <code>main</code> and share the GitHub Pages URL (see README).
+        </div>
         <div class="stats">
           <div class="stat"><b>60</b>Daily sessions</div>
           <div class="stat"><b>${COURSE.modules.length}</b>Modules</div>

@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salesforce DevOps Mastery — 60 Day Course</title>
+  <script>
+    // GitHub Pages project sites need a trailing slash so relative assets resolve
+    (function () {
+      var p = location.pathname;
+      if (p !== '/' && !p.endsWith('/') && !/\.[a-z0-9]+$/i.test(p)) {
+        location.replace(p + '/' + location.search + location.hash);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
