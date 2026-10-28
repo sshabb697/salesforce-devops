@@ -1,11 +1,12 @@
-# Publishes the course as a website on every push to main.
-# Students open: https://sshabb697.github.io/salesforce-devops/
+# Optional: only used if you choose Source = "GitHub Actions" in Settings → Pages.
+# Easier path (recommended): Settings → Pages → Source = "Deploy from a branch"
+#   Branch: main   Folder: / (root)   → then students use the site with NO Actions needed.
 name: Deploy course site
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -23,10 +24,27 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@v5
+      - name: Setup Pages
+        id: pages
+        continue-on-error: true
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        if: steps.pages.outcome == 'success'
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
+        if: steps.pages.outcome == 'success'
         uses: actions/deploy-pages@v4
+      - name: How to enable Pages (if setup failed)
+        if: steps.pages.outcome != 'success'
+        run: |
+          echo "::error::GitHub Pages is not enabled yet. Do this once in the browser:"
+          echo "1. Open https://github.com/${{ github.repository }}/settings/pages"
+          echo "2. Build and deployment → Source → choose 'Deploy from a branch'"
+          echo "3. Branch: main   Folder: / (root)   → Save"
+          echo "4. Wait 1 minute, then open https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          echo "You do NOT need this Actions workflow if you use 'Deploy from a branch'."
+          exit 1

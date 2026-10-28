@@ -16,13 +16,25 @@ https://sshabb697.github.io/salesforce-devops/
 **Source repo:**  
 https://github.com/sshabb697/salesforce-devops
 
-### One-time setup (instructor)
+### One-time setup (instructor) — use “Deploy from a branch” (simplest)
 
-1. Make the repo **Public** (Settings → General → Danger Zone → Change visibility), *or* keep it Private if you have GitHub Pro/Team and grant students read access.
-2. Settings → **Pages** → Build and deployment → Source: **GitHub Actions**.
-3. Push to `main` (or run the **Deploy course site** workflow under Actions).
-4. Wait 1–2 minutes, then open the Course URL above.
-5. Share that URL (and optionally Day deep-links like `…/salesforce-devops/#day-6`) in your classroom chat.
+Ignore the Actions error `Get Pages site failed … Not Found`. You do **not** need GitHub Actions for this static course.
+
+1. Make the repo **Public**  
+   Settings → General → Danger zone → Change visibility → **Public**  
+   (Free GitHub accounts cannot publish Pages from a private repo.)
+2. Open **Settings → Pages**  
+   https://github.com/sshabb697/salesforce-devops/settings/pages
+3. Under **Build and deployment**:
+   - **Source:** Deploy from a branch  
+   - **Branch:** `main`  
+   - **Folder:** `/ (root)`  
+   - Click **Save**
+4. Wait about 1 minute. A green check / “Your site is live” appears on the same Pages settings page.
+5. Open and share: **https://sshabb697.github.io/salesforce-devops/**  
+   Example lesson link: `https://sshabb697.github.io/salesforce-devops/#day-6`
+
+After each `git push origin main`, the site updates automatically (no Actions required).
 
 ### How you present in class
 
