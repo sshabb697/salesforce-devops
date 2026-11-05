@@ -254,147 +254,296 @@ git log --oneline --graph --all` }],
       ]
     },
     {
-      t: 'Create a Remote Repo & Connect Local ↔ GitHub',
-      mins: 100, level: 'Beginner', tags: ['github', 'remote', 'push', 'pull', 'origin'],
+      t: 'Working on GitHub: Create Repo, Credentials (HTTPS/SSH), Clone, Push & Pull',
+      mins: 120, level: 'Beginner', tags: ['github', 'https', 'ssh', 'clone', 'credentials', 'push', 'pull'],
       obj: [
-        'Create an empty repository on GitHub',
-        'Connect local repo to remote with git remote add',
-        'Push and pull confidently and explain fetch vs pull'
+        'Create a GitHub repository from the website (empty vs with README)',
+        'Set up HTTPS credentials (Personal Access Token) or SSH keys',
+        'Clone a repo with HTTPS and with SSH, then push and pull with real examples'
       ],
-      analogy: { icon: '☁️', text: 'Your laptop album is private. GitHub is the shared family album in the cloud. Connecting them is writing the cloud album\'s address in your address book (remote name: origin). Push uploads your new pages. Pull downloads everyone else\'s pages.' },
-      diagramTitle: 'Picture — Local and remote are two copies of the same album',
+      analogy: { icon: '☁️', text: 'GitHub is the shared family photo album in the cloud. Creating a repo is buying a new album. HTTPS with a Personal Access Token is like a hotel key card (you type a code once; Windows remembers it). SSH is like a house key on your keyring (you set it up once; it unlocks without typing every time). Clone is photocopying the whole album onto a new laptop. Push uploads your new pages; pull downloads everyone else\'s.' },
+      diagramTitle: 'Picture — Two doors into the same GitHub house',
       diagram: `
-flowchart LR
-  subgraph LOCAL["💻 Local (your laptop)"]
-    L["📚 .git history<br/>branch: main"]
+flowchart TB
+  subgraph GH["☁️ GitHub repo: acme-salesforce"]
+    R["main branch + history"]
   end
-  subgraph REMOTE["☁️ GitHub remote"]
-    R["📚 acme-salesforce.git<br/>branch: main"]
+  subgraph HTTPS["🚪 Door A — HTTPS"]
+    H1["URL: https://github.com/YOU/acme-salesforce.git"]
+    H2["Login: username + Personal Access Token<br/>(NOT your GitHub password)"]
   end
-  L -- "git push" --> R
-  R -- "git pull / fetch" --> L
-  L -. "git remote add origin URL" .- R`,
-      diagramCaption: 'Connectivity = telling local Git the remote URL, then push/pull.',
+  subgraph SSH["🔑 Door B — SSH"]
+    S1["URL: git@github.com:YOU/acme-salesforce.git"]
+    S2["Login: SSH private key on your laptop<br/>(public key saved on GitHub)"]
+  end
+  HTTPS --> R
+  SSH --> R`,
+      diagramCaption: 'Pick one door for class. HTTPS + PAT is usually fastest for beginners on Windows.',
       images: [
         {
-          title: 'Classic chart — focus on push / fetch / pull',
-          text: 'Cover the Local-only rows with your hand. Trace <b>orange git push</b> (Saving changes) and <b>purple git fetch / merge / pull</b> (Getting changes). That is today\'s connectivity.',
+          title: 'Classic chart — push / fetch / pull rows',
+          text: 'After credentials work, these arrows are what you use every day.',
           src: 'assets/images/git-workflow-reference.jpg',
           alt: 'Classic Git workflow showing push fetch pull',
-          caption: 'push uploads commits. fetch downloads info. pull = fetch + merge into your working files.',
+          caption: 'push uploads. fetch downloads info. pull = fetch + merge.',
           credit: 'Teaching reference (ByteByteGo-style Git Workflow).'
         },
         {
-          title: 'Salesforce edition — where Remote fits',
-          text: 'After push, GitHub/Azure Repos holds the shared history. Later, CI clones/pulls this remote and deploys to QA/UAT/Prod sandboxes.',
+          title: 'Salesforce edition',
+          text: 'Remote is GitHub (source of truth). Sandboxes are deployment targets later — not the remote.',
           src: 'assets/images/git-workflow-salesforce.jpg',
-          alt: 'Git Workflow for Salesforce showing remote repository',
-          caption: 'Remote ≠ Salesforce org. Remote is Git. Orgs are deployment targets (Day 11 map).'
-        },
-        {
-          title: 'Classroom poster (SVG)',
-          text: 'Same map as a sharp projector/print poster.',
-          src: 'assets/images/git-workflow.svg',
-          alt: 'Git Workflow poster highlighting local to remote push and pull',
-          caption: 'Trace: commit stays local → push uploads → fetch/pull downloads.'
+          alt: 'Git Workflow for Salesforce',
+          caption: 'Today: laptop ↔ GitHub only.'
         }
       ],
       walkthrough: [
         {
-          title: 'Create an EMPTY repo on GitHub (do this first)',
-          text: 'On github.com → New repository. Name: <code>acme-salesforce</code>. Visibility: Private is fine. <b>Do not</b> add README, .gitignore, or license — your local repo already has commits. Adding a README creates a different first commit and causes a push rejection.',
+          title: 'Step 1 — Create the repository on GitHub',
+          text: 'Sign in at <a href="https://github.com" target="_blank">github.com</a> → green <b>New</b> (or + → New repository).',
           diagram: `
 flowchart TB
-  A["GitHub → New repository"] --> B["Name: acme-salesforce"]
-  B --> C["❌ Uncheck README / .gitignore / license"]
-  C --> D["Create repository"]
-  D --> E["Copy the HTTPS URL<br/>https://github.com/YOU/acme-salesforce.git"]`,
-          tip: 'If you accidentally created a README on GitHub, either delete that file on GitHub or use <code>git pull origin main --allow-unrelated-histories</code> once (advanced). Prefer empty remote.'
+  A["github.com → New repository"] --> B["Repository name: acme-salesforce"]
+  B --> C["Owner: your username"]
+  C --> D{"Already have local commits<br/>from Day 6?"}
+  D -- "Yes" --> E["Visibility: Private or Public<br/>❌ Do NOT add README / .gitignore / license"]
+  D -- "No (starting fresh)" --> F["✅ Add a README<br/>so the repo is not empty"]
+  E --> G["Create repository"]
+  F --> G
+  G --> H["Copy either HTTPS or SSH URL from the green Code button"]`,
+          tip: 'Empty remote = best when you already ran <code>git init</code> locally. README remote = best when you will <code>git clone</code> first.'
         },
         {
-          title: 'Add the remote address to your local repo',
-          text: '<code>origin</code> is just a nickname for the GitHub URL. You can have more remotes later (Azure DevOps as <code>ado</code>, for example).',
+          title: 'Step 2 — Choose HTTPS or SSH (classroom recommendation)',
+          text: 'Both talk to the same repo. Credentials are the only difference.',
           diagram: `
 flowchart LR
-  L["💻 Local repo"] -- "git remote add origin URL" --> BOOK["Address book<br/>origin = GitHub URL"]`,
-          code: { title: 'Connect', src: `cd acme-salesforce
-git remote add origin https://github.com/<YOUR_USER>/acme-salesforce.git
-git remote -v
-# Expect two lines (fetch + push) pointing at the same URL` }
+  subgraph REC["👍 Recommended for Day 8"]
+    A["HTTPS + Personal Access Token<br/>+ Git Credential Manager"]
+  end
+  subgraph ADV["Later / power users"]
+    B["SSH key pair"]
+  end`,
+          code: { title: 'URL shapes (same repo)', src: `# HTTPS
+https://github.com/<YOUR_USER>/acme-salesforce.git
+
+# SSH
+git@github.com:<YOUR_USER>/acme-salesforce.git` },
+          tip: 'Corporate laptops sometimes block SSH. HTTPS almost always works.'
         },
         {
-          title: 'Push local main to GitHub (first upload)',
-          text: '<code>-u</code> sets upstream tracking so later you can type just <code>git push</code> / <code>git pull</code>.',
+          title: 'Step 3A — Set up HTTPS credentials (Personal Access Token)',
+          text: 'GitHub <b>rejects account passwords</b> for <code>git push</code> / <code>git pull</code>. You need a PAT.',
+          diagram: `
+flowchart TB
+  A["GitHub → Settings → Developer settings"] --> B["Personal access tokens"]
+  B --> C["Tokens (classic) → Generate new token"]
+  C --> D["Note: 'laptop-git' · Expiry: 90 days"]
+  D --> E["Scope: tick repo"]
+  E --> F["Generate → COPY the token NOW<br/>(ghp_....) — you will not see it again"]
+  F --> G["First git push/pull → Username = GitHub username<br/>Password = paste the TOKEN"]`,
+          code: { title: 'Windows: let Credential Manager remember it', src: `# Git for Windows usually includes Git Credential Manager.
+git config --global credential.helper manager
+# Older installs may use:
+# git config --global credential.helper wincred
+
+# Optional: confirm your identity (same as Day 6 setup)
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"` },
+          warn: 'Never commit a PAT into a file or chat. If it leaks, revoke it immediately under the same GitHub settings page.'
+        },
+        {
+          title: 'Step 3B — Set up SSH credentials (optional alternative)',
+          text: 'Do this if you prefer key-based login, or your company standard is SSH.',
+          code: { title: 'Generate key, add to ssh-agent, upload public key', src: `# 1) Create an ed25519 key (press Enter for default file; set a passphrase)
+ssh-keygen -t ed25519 -C "you@example.com"
+
+# 2) Start agent and add the key (Git Bash / PowerShell with OpenSSH)
+eval "$(ssh-agent -s)"          # Git Bash
+ssh-add ~/.ssh/id_ed25519
+
+# PowerShell alternative:
+# Get-Service ssh-agent | Set-Service -StartupType Manual
+# Start-Service ssh-agent
+# ssh-add $env:USERPROFILE\\.ssh\\id_ed25519
+
+# 3) Copy PUBLIC key (NOT the file without .pub)
+# Git Bash:
+clip < ~/.ssh/id_ed25519.pub
+# PowerShell:
+Get-Content $env:USERPROFILE\\.ssh\\id_ed25519.pub | Set-Clipboard
+
+# 4) GitHub → Settings → SSH and GPG keys → New SSH key → paste → Save
+
+# 5) Test
+ssh -T git@github.com
+# Expect: Hi <YOU>! You've successfully authenticated...` },
+          tip: 'If <code>ssh -T</code> fails, check that you pasted the <code>.pub</code> file and that corporate firewall allows port 22 (sometimes you need SSH over HTTPS on port 443).'
+        },
+        {
+          title: 'Step 4 — Path A: You already have a local repo (Day 6) → connect & push',
+          text: 'Use an <b>empty</b> GitHub repo (no README). This is the most common Salesforce class path.',
           diagram: `
 sequenceDiagram
-  participant L as 💻 Local main
-  participant G as ☁️ GitHub
+  participant L as 💻 Local acme-salesforce
+  participant G as ☁️ Empty GitHub repo
+  L->>L: git remote add origin URL
   L->>G: git push -u origin main
-  G-->>L: main is now on GitHub`,
-          code: { title: 'First push', src: `git push -u origin main
-# Refresh github.com/.../acme-salesforce — you should see your files` },
-          warn: 'Authentication: GitHub no longer accepts account passwords for Git. Use a Personal Access Token (HTTPS) or SSH keys. VS Code / Git Credential Manager will prompt you.'
+  G-->>L: files visible on GitHub`,
+          code: { title: 'HTTPS example', src: `cd acme-salesforce
+git remote add origin https://github.com/<YOUR_USER>/acme-salesforce.git
+git remote -v
+git branch -M main
+git push -u origin main
+# Prompt: Username → your GitHub username
+# Prompt: Password → paste PAT (ghp_...)` }
         },
         {
-          title: 'Prove the two-way connection (pull / fetch)',
-          text: 'Make a tiny edit on GitHub in the browser (edit README → Commit). Then bring it down to your laptop.',
+          title: 'Step 4 (SSH variant of Path A)',
+          text: 'Same commands; only the URL changes.',
+          code: { title: 'SSH example', src: `cd acme-salesforce
+git remote add origin git@github.com:<YOUR_USER>/acme-salesforce.git
+git remote -v
+git push -u origin main
+# No username/password prompt if ssh -T already worked` }
+        },
+        {
+          title: 'Step 5 — Path B: Clone an existing GitHub repo (HTTPS and SSH)',
+          text: 'Use this when the project already lives on GitHub (or you created it with a README). Clone creates the folder, downloads history, and sets <code>origin</code> for you.',
           diagram: `
 flowchart LR
-  G["☁️ GitHub<br/>README edited in browser"] -- "git pull" --> L["💻 Local<br/>updated README"]`,
-          code: { title: 'Fetch vs pull', src: `git fetch origin          # download info, do not change your files yet
-git status               # may say "Your branch is behind"
-git pull                 # fetch + merge into your current branch
-# Now local README matches GitHub` },
-          tip: '<b>fetch</b> = look at the cloud album without changing yours. <b>pull</b> = look and also paste the new pages into yours.'
+  G["☁️ GitHub"] -- "git clone URL" --> L["💻 new folder<br/>+ .git + origin already set"]`,
+          code: { title: 'Clone with HTTPS', src: `cd ~/projects
+# or: cd C:\\Users\\<you>\\projects
+
+git clone https://github.com/<YOUR_USER>/acme-salesforce.git
+cd acme-salesforce
+git remote -v
+git status
+git log --oneline -5` },
         },
         {
-          title: 'Everyday sync picture (memorise this)',
-          text: 'Before starting work: pull. After finishing commits: push. Never leave commits only on one laptop for days.',
+          title: 'Step 5 continued — Clone with SSH',
+          code: { title: 'Clone with SSH', src: `cd ~/projects
+git clone git@github.com:<YOUR_USER>/acme-salesforce.git
+cd acme-salesforce
+git remote -v
+# Expect origin → git@github.com:...` },
+          tip: 'Already cloned with HTTPS but want SSH? <code>git remote set-url origin git@github.com:USER/REPO.git</code>'
+        },
+        {
+          title: 'Step 6 — Everyday push & pull (worked examples)',
+          text: 'Practise the daily loop. Memorise: pull before you start, push when commits are ready.',
           diagram: `
 flowchart TB
-  S["🌅 Start of day"] --> P["git pull"]
-  P --> W["💻 Work + commit"]
-  W --> U["git push"]
-  U --> E["🌆 End of day — team can see it"]`
+  S["🌅 Start"] --> P["git pull"]
+  P --> E["edit files"]
+  E --> A["git add ."]
+  A --> C["git commit -m 'message'"]
+  C --> U["git push"]
+  U --> N["🌆 teammates can pull"]`,
+          code: { title: 'Example session (after clone or first push)', src: `# --- morning: get latest ---
+git switch main
+git pull
+
+# --- do work ---
+echo "Team note: always pull before push" >> README.md
+git status
+git add README.md
+git commit -m "docs: remind team to pull before push"
+
+# --- upload ---
+git push
+
+# --- teammate / second laptop simulation ---
+# On GitHub website: edit README → Commit changes
+# Back on laptop:
+git fetch origin
+git status          # "Your branch is behind 'origin/main'"
+git pull
+git log --oneline -3` },
+          tip: '<b>fetch</b> = download updates without changing your files. <b>pull</b> = fetch + merge into your current branch.'
+        },
+        {
+          title: 'Step 7 — Fix common auth errors (cheat sheet)',
+          text: 'Hang this list next to the projector during lab time.',
+          code: { title: 'Symptoms → fixes', src: `# "Support for password authentication was removed"
+→ You used your GitHub password. Use a PAT as the password (HTTPS) or switch to SSH.
+
+# "remote: Invalid username or password" / "Authentication failed"
+→ Revoke old PAT, create a new one with repo scope, clear saved creds:
+  Windows: Control Panel → Credential Manager → Windows Credentials
+           → remove github.com entries → try push again
+
+# "Permission denied (publickey)"
+→ SSH key not loaded or not on GitHub. Run: ssh -T git@github.com
+→ Add the .pub key under GitHub → Settings → SSH keys
+→ ssh-add ~/.ssh/id_ed25519
+
+# "failed to push some refs" / "non-fast-forward"
+→ GitHub has commits you do not. Run: git pull --rebase  then  git push
+
+# "remote origin already exists"
+→ git remote remove origin
+→ git remote add origin <URL>` }
         }
       ],
       concepts: [
-        ['Remote', 'A server copy of the repo (usually GitHub or Azure Repos).'],
-        ['origin', 'Default nickname for your main remote URL.'],
-        ['Upstream (-u)', 'Links your local branch to origin/branch so push/pull know the destination.'],
-        ['Clone vs init', '<code>git clone URL</code> downloads an existing remote AND sets origin for you. Today you used init + remote add because the local repo already existed.']
+        ['Create repo on GitHub', 'Website action that makes an empty (or README) remote. Still need clone or remote add + push from your laptop.'],
+        ['HTTPS + PAT', 'URL starts with https://. Username = GitHub user. Password = token (ghp_…), never the login password.'],
+        ['SSH', 'URL starts with git@github.com:. Auth uses a key pair. Public key lives on GitHub; private key stays on your machine.'],
+        ['git clone', 'One command that downloads the repo, creates the folder, and sets origin. Use when starting from GitHub.'],
+        ['git remote add + push', 'Use when the folder already exists locally (Day 6 path).'],
+        ['git push / git pull', 'Upload your commits / download + merge remote commits. Daily habits for every Salesforce DevOps team.']
       ],
-      code: [{ title: 'Remote cheat sheet', src: `
+      code: [
+        { title: 'HTTPS cheat sheet', src: `
+# Create empty repo on github.com, then:
 git remote add origin https://github.com/USER/REPO.git
-git remote -v
 git push -u origin main
-git fetch origin
-git pull
-git clone https://github.com/USER/REPO.git   # alternative starting point` }],
-      pitfall: 'Pushing when GitHub already has a different first commit (README created on website). Always create an empty remote when connecting an existing local repo.',
+
+# Or start from GitHub:
+git clone https://github.com/USER/REPO.git
+cd REPO
+# edit → add → commit →
+git push
+git pull` },
+        { title: 'SSH cheat sheet', src: `
+ssh-keygen -t ed25519 -C "you@example.com"
+# upload ~/.ssh/id_ed25519.pub to GitHub SSH keys
+ssh -T git@github.com
+
+git clone git@github.com:USER/REPO.git
+# or
+git remote add origin git@github.com:USER/REPO.git
+git push -u origin main` }
+      ],
+      pitfall: 'Creating a GitHub repo WITH a README and then pushing an unrelated local history. Either clone the README repo and copy files in, or create an empty remote for an existing local repo.',
       quiz: [
-        ['What does `git remote add origin URL` do?', ['Uploads files', 'Saves the remote URL under the name origin', 'Creates a branch', 'Deploys to Salesforce'], 1, 'It only writes the address. Push uploads.'],
-        ['`git fetch` vs `git pull`?', ['They are identical', 'fetch downloads without merging; pull = fetch + merge', 'pull deletes remote', 'fetch uploads'], 1, 'fetch is safe inspection; pull updates your branch.']
+        ['For HTTPS Git on GitHub, the "password" prompt expects…', ['Your GitHub login password', 'A Personal Access Token', 'Your Salesforce password', 'Nothing — HTTPS never asks'], 1, 'Passwords for Git were removed. Use a PAT with the repo scope.'],
+        ['Which URL is SSH?', ['https://github.com/u/r.git', 'git@github.com:u/r.git', 'http://github.com/u/r', 'sf://github/u/r'], 1, 'SSH URLs use git@github.com:owner/repo.git'],
+        ['`git clone` does which of these for you?', ['Only downloads ZIP without history', 'Creates folder, downloads history, sets origin', 'Deploys to a sandbox', 'Opens a Pull Request'], 1, 'Clone is the fast start when the project already lives on GitHub.'],
+        ['`git fetch` vs `git pull`?', ['Identical', 'fetch downloads without merging; pull = fetch + merge', 'pull deletes remote', 'fetch uploads'], 1, 'fetch inspects; pull updates your branch.']
       ],
       lab: {
-        title: 'Wire laptop ↔ GitHub',
-        goal: 'Connect your Day 6 local repo to a brand-new empty GitHub repo and sync both ways.',
+        title: 'Full GitHub loop: create → credentials → clone OR connect → push/pull',
+        goal: 'Prove you can create a GitHub repo, authenticate (HTTPS or SSH), and sync both directions.',
         steps: [
-          'Create empty GitHub repo <code>acme-salesforce</code> (no README).',
-          ['Add origin and push main.', 'git remote add origin https://github.com/<YOU>/acme-salesforce.git\ngit push -u origin main'],
-          'Confirm files appear on GitHub in the browser.',
-          'Edit README on GitHub in the browser and commit.',
-          ['Pull the browser change locally.', 'git pull'],
-          'Make a local commit, push, and refresh GitHub.'
+          'Create GitHub repo <code>acme-salesforce</code>. If using Day 6 local folder: leave it empty (no README). If starting fresh: add a README.',
+          'Set up credentials: create a classic PAT with <code>repo</code> scope <b>or</b> generate an SSH key and upload the <code>.pub</code> file. Test SSH with <code>ssh -T git@github.com</code> if you chose SSH.',
+          ['Path A (existing local): add origin and push.', 'cd acme-salesforce\ngit remote add origin https://github.com/<YOU>/acme-salesforce.git\ngit push -u origin main'],
+          ['Path B (fresh): clone into a new folder.', 'git clone https://github.com/<YOU>/acme-salesforce.git\ncd acme-salesforce'],
+          'Make a local edit to README, commit, <code>git push</code>. Confirm it on github.com.',
+          'Edit README in the GitHub browser UI and commit. On your laptop run <code>git pull</code> and confirm the text matches.',
+          ['Record your chosen method.', 'git remote -v\n# Screenshot or note: HTTPS or SSH URL']
         ],
-        verify: '<code>git remote -v</code> shows origin. Local and GitHub README match. History exists on both sides.',
-        challenge: 'Create a second remote named <code>backup</code> pointing at another empty repo and <code>git push backup main</code>.'
+        verify: '<code>git remote -v</code> shows origin. You pushed at least once and pulled at least once without auth errors. Files match on GitHub and laptop.',
+        challenge: 'Switch origin from HTTPS to SSH with <code>git remote set-url</code>, then push a tiny commit successfully.'
       },
       teach: [
-        'Bring back the Day 6 poster and uncover the Remote box with a flourish.',
-        'Live-create the GitHub repo on the projector. Emphasise "no README".',
-        'Help each student through auth (PAT vs SSH) — this is the #1 classroom blocker.',
-        'Ask a student to explain fetch vs pull in one sentence to a non-technical peer while pointing at the purple arrows.'
+        'Block 20–30 minutes for credentials — this is the #1 classroom delay. Walk PAT creation on the projector.',
+        'Offer a help desk lane: HTTPS table vs SSH table. Do not force both on every student today.',
+        'Live-create the repo; emphasise empty vs README choice based on Path A vs Path B.',
+        'End with a chorus: "Pull before work. Push when done."'
       ]
     },
     {
