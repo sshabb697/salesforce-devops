@@ -170,7 +170,7 @@ flowchart LR
       ],
       lab: {
         title: 'Connect GitHub to Salesforce',
-        goal: 'Authenticate from a workflow using your Day 18 JWT setup.',
+        goal: 'Authenticate from a workflow using your Day 21 JWT setup.',
         steps: [
           'Base64-encode server.key (<code>base64 -w0 server.key</code>, or in PowerShell <code>[Convert]::ToBase64String([IO.File]::ReadAllBytes("server.key"))</code>).',
           'Create GitHub environments <code>uat</code> (acme-dev) and <code>production</code> (acme-prod).',
@@ -304,7 +304,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
-      # ... install CLI + sgd, authenticate (same as Day 30) ...
+      # ... install CLI + sgd, authenticate (same as Day 33) ...
       - name: Delta since last deploy
         run: |
           ENV_TAG="deployed/\${{ github.ref_name == 'main' && 'production' || 'nonprod' }}"
@@ -327,7 +327,7 @@ jobs:
         title: 'Continuous delivery with a gate',
         goal: 'Merge into main and deploy to acme-prod after an approval.',
         steps: [
-          'Create <code>deploy.yml</code> by combining the auth and install steps from Day 30.',
+          'Create <code>deploy.yml</code> by combining the auth and install steps from Day 33.',
           'Add yourself (or a classmate) as a required reviewer on the <code>production</code> environment.',
           'Merge a small change to develop and watch it auto-deploy.',
           'Merge to main. The run pauses for approval, so approve it and watch the deploy.',
@@ -514,7 +514,7 @@ flowchart LR
         steps: [
           'Add Dev Hub JWT secrets (acme-prod) to a <code>devhub</code> environment.',
           'Create <code>scratch-ci.yml</code> triggered on pull_request.',
-          'Include create, deploy, seed data (from Day 19), test and delete steps.',
+          'Include create, deploy, seed data (from Day 22), test and delete steps.',
           'Open a PR and watch the full lifecycle.',
           'Run <code>sf org list --all</code> locally to confirm that no orphaned scratch org remains.'
         ],
@@ -605,7 +605,7 @@ flowchart LR
           'Module 5 wrap-up: tag <code>v0.5.0</code>.'
         ],
         verify: 'The feature is live in acme-prod with a GitHub Release, and the docs are merged.',
-        challenge: 'Measure your new lead time and update the DORA scorecard from Day 5.'
+        challenge: 'Measure your new lead time and update the DORA scorecard from Day 8.'
       },
       teach: ['Run a "chaos" session: secretly break something (an expired cert, a wrong secret) and let teams diagnose it.', 'Module 5 assessment: a demo of their pipeline in 5 minutes.']
     }

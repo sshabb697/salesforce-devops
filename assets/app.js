@@ -87,9 +87,9 @@
     main.innerHTML = `
       <section class="hero">
         <div class="eyebrow" style="color:#cfe6ff">For professionals with ~5 years of Salesforce experience</div>
-        <h1>Salesforce DevOps Mastery in 60 Days</h1>
-        <p>Go from change sets to fully automated, governed release pipelines. Every day has a plain-English analogy, a visual diagram,
-        hands-on code, a quick quiz and a lab. You will build real pipelines with <b>Salesforce CLI</b>, <b>GitHub Actions</b>,
+        <h1>Salesforce DevOps Mastery in ${days.length} Days</h1>
+        <p>Start with what Salesforce is (even if you are non-IT), then go from change sets to fully automated, governed release pipelines.
+        Every day has a plain-English analogy, visuals, a quiz and a lab. You will build real pipelines with <b>Salesforce CLI</b>, <b>GitHub Actions</b>,
         <b>Azure DevOps</b>, <b>Copado</b> and <b>DevOps Center</b>.</p>
         <a class="btn" href="#day-${next.n}">${state.done.d1 ? '▶ Continue: Day ' + next.n : '▶ Start Day 1'}</a>
         <a class="btn" style="margin-left:8px" href="#setup">🧰 Setup checklist</a>
@@ -98,7 +98,7 @@
           Instructors: push to <code>main</code> and share the GitHub Pages URL (see README).
         </div>
         <div class="stats">
-          <div class="stat"><b>60</b>Daily sessions</div>
+          <div class="stat"><b>${days.length}</b>Daily sessions</div>
           <div class="stat"><b>${COURSE.modules.length}</b>Modules</div>
           <div class="stat"><b>${totalLabs}</b>Hands-on labs</div>
           <div class="stat"><b>${totalQ}</b>Quiz questions</div>
@@ -177,7 +177,7 @@
     const prev = days[n - 2], next = days[n];
     const isDone = !!state.done[d.key];
     main.innerHTML = `
-      <div class="eyebrow">Day ${d.n} of 60 · Module ${m.index}: ${esc(m.title)}</div>
+      <div class="eyebrow">Day ${d.n} of ${days.length} · Module ${m.index}: ${esc(m.title)}</div>
       <h1>${esc(d.t)}</h1>
       <div style="margin-bottom:16px">
         <span class="pill">⏱️ ${d.mins || 90} min</span><span class="pill">🎚️ ${d.level || 'Intermediate'}</span>

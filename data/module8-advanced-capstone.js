@@ -178,9 +178,9 @@ flowchart LR
           'Add a post-deploy smoke step to both your GHA and ADO production jobs.',
           'Install Nebula Logger in a dev org (optional), log an error from ProjectService, and view it.',
           'Export your pipeline run history (GitHub API or ADO Analytics) and calculate deployment frequency and lead time for the course period.',
-          'Update the Day 5 DORA scorecard with real data.'
+          'Update the Day 8 DORA scorecard with real data.'
         ],
-        verify: 'Smoke tests run after each prod deploy, and your scorecard shows improvement versus Day 5.',
+        verify: 'Smoke tests run after each prod deploy, and your scorecard shows improvement versus Day 8.',
         challenge: 'Build a small dashboard (Power BI, Looker Studio or a CRM Analytics/Salesforce report) for DORA metrics.'
       },
       teach: ['Ask learners to present their before-and-after DORA numbers. It makes the progress visible.']
@@ -213,7 +213,7 @@ flowchart LR
         steps: [
           'Ask your AI assistant to generate an Apex test class for ProjectService with bulk and negative tests.',
           'Run Code Analyzer and the tests. Record what the AI got wrong.',
-          'Ask it to convert your GitHub Actions PR validation workflow into Azure Pipelines YAML, then compare the result with your Day 42 version.',
+          'Ask it to convert your GitHub Actions PR validation workflow into Azure Pipelines YAML, then compare the result with your Day 45 version.',
           'Ask it to summarise a failed deploy log from your CI history.',
           'Write team guidelines in <code>docs/ai-usage.md</code>, covering what is allowed, what is forbidden and the review rules.'
         ],
@@ -248,7 +248,7 @@ flowchart TB
       ],
       quiz: [
         ['Which artifact proves to auditors what reached prod?', ['Slack message', 'Release tag + pipeline run + approval record', 'Developer\'s memory', 'Sandbox'], 1, 'An immutable, linked trail of evidence.'],
-        ['What should the capstone measure at the end?', ['Lines of YAML', 'DORA metrics vs Day 5 baseline', 'Number of branches', 'Number of tools used'], 1, 'Outcomes, not activity.']
+        ['What should the capstone measure at the end?', ['Lines of YAML', 'DORA metrics vs Day 8 baseline', 'Number of branches', 'Number of tools used'], 1, 'Outcomes, not activity.']
       ],
       lab: {
         title: 'Capstone sprint',
@@ -274,11 +274,11 @@ flowchart TB
       analogy: { icon: '🎤', text: 'A chef\'s final exam is serving the meal to real guests and explaining it in their language. Today you show your pipeline to people who care about results ("we release weekly with fewer bugs"), not just ingredients ("we use sgd").' },
       diagram: `
 flowchart LR
-  D1["📊 Day 1 pain points<br/>+ Day 5 DORA baseline"] --> D60["📈 Day 60 results"]
+  D1["📊 Day 4 pain points<br/>+ Day 8 DORA baseline"] --> D60["📈 Day 63 results"]
   D60 --> DEMO["🎤 5-min demo<br/>story → prod live"]
   DEMO --> CAREER["🚀 Next steps<br/>certs, portfolio, roll-out plan"]`,
       concepts: [
-        ['Demo structure', 'Problem (Day 1 pain points) → live story-to-prod flow → evidence (approvals, tests) → results (DORA before and after) → next steps.'],
+        ['Demo structure', 'Problem (Day 4 pain points) → live story-to-prod flow → evidence (approvals, tests) → results (DORA before and after) → next steps.'],
         ['Interview topics', 'Branching strategy trade-offs, delta vs full deploys, JWT setup, test levels and quick deploy, destructive changes, profiles vs permission sets, rollback strategy, GHA vs ADO, and Copado vs DevOps Center.'],
         ['Credentials & portfolio', 'Development Lifecycle and Deployment Architect (Salesforce), Copado Fundamentals I and II, GitHub Actions certification, and Microsoft AZ-400. Your public capstone repo is your strongest proof.'],
         ['Teaching & roll-out', 'Start with one team, show quick wins (PR validation), measure, then scale with shared templates. Use this course\'s Trainer mode to run your own cohort.']
@@ -292,10 +292,10 @@ flowchart LR
         goal: 'Close the course with a demo, a retrospective and a 90-day plan.',
         steps: [
           'Deliver a 5-minute live demo of your capstone.',
-          'Revisit your Day 1 pain points. Which ones are solved, and which remain?',
+          'Revisit your Day 4 pain points. Which ones are solved, and which remain?',
           'Answer 10 mock interview questions with a partner (use the interview topics above).',
           'Write a 90-day roll-out plan for your workplace: pilot team, first pipeline, metrics and training plan.',
-          'Optional: run Day 1 of this course for a colleague using Trainer mode.'
+          'Optional: run Day 4 of this course for a colleague using Trainer mode.'
         ],
         verify: 'Demo delivered, retrospective written and 90-day plan shared with your manager or mentor.',
         challenge: 'Publish a blog post or LinkedIn article on "What I learned building Salesforce CI/CD in GitHub Actions and Azure DevOps".'

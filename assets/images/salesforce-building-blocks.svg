@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" role="img" aria-labelledby="title desc">
+  <title id="title">Salesforce Building Blocks</title>
+  <desc id="desc">Nested model: Org contains Objects, Objects contain Fields, Fields describe Records. Metadata is the blueprint; data is the content.</desc>
+  <defs>
+    <style>
+      .title { font: 700 28px Segoe UI, Arial, sans-serif; fill: #1b2436; }
+      .sub { font: 600 14px Segoe UI, Arial, sans-serif; fill: #5d6b82; }
+      .h { font: 700 16px Segoe UI, Arial, sans-serif; fill: #fff; }
+      .p { font: 13px Segoe UI, Arial, sans-serif; fill: #1b2436; }
+      .m { font: 12px Segoe UI, Arial, sans-serif; fill: #5d6b82; }
+      .label { font: 700 14px Segoe UI, Arial, sans-serif; fill: #0b5cab; }
+    </style>
+  </defs>
+  <rect width="1100" height="720" fill="#f5f7fb"/>
+  <text x="40" y="42" class="title">Salesforce Building Blocks</text>
+  <text x="40" y="68" class="sub">Think of nested boxes  like folders inside folders  that make up every Salesforce company space</text>
+
+  <!-- Org -->
+  <rect x="40" y="100" width="680" height="500" rx="18" fill="#e7f1fb" stroke="#0b5cab" stroke-width="3"/>
+  <rect x="40" y="100" width="680" height="40" rx="18" fill="#0b5cab"/>
+  <rect x="40" y="120" width="680" height="20" fill="#0b5cab"/>
+  <text x="60" y="126" class="h">1. Org = your company's Salesforce space</text>
+
+  <!-- Objects -->
+  <rect x="70" y="170" width="300" height="390" rx="14" fill="#fff" stroke="#2e844a" stroke-width="2"/>
+  <rect x="70" y="170" width="300" height="36" rx="14" fill="#2e844a"/>
+  <rect x="70" y="188" width="300" height="18" fill="#2e844a"/>
+  <text x="90" y="194" class="h">2. Objects (tables)</text>
+  <text x="90" y="240" class="p">Account  (companies)</text>
+  <text x="90" y="270" class="p">Contact  (people)</text>
+  <text x="90" y="300" class="p">Opportunity (deals)</text>
+  <text x="90" y="330" class="p">Case  (support tickets)</text>
+  <text x="90" y="370" class="m">Custom objects too:</text>
+  <text x="90" y="395" class="p">Project__c, Invoice__c&</text>
+
+  <!-- Fields -->
+  <rect x="400" y="170" width="280" height="180" rx="14" fill="#fff" stroke="#c47a00" stroke-width="2"/>
+  <rect x="400" y="170" width="280" height="36" rx="14" fill="#c47a00"/>
+  <rect x="400" y="188" width="280" height="18" fill="#c47a00"/>
+  <text x="420" y="194" class="h">3. Fields (columns)</text>
+  <text x="420" y="240" class="p">Name · Email · Phone</text>
+  <text x="420" y="268" class="p">Amount · Stage · Status</text>
+  <text x="420" y="296" class="p">Budget__c (custom)</text>
+
+  <!-- Records -->
+  <rect x="400" y="380" width="280" height="180" rx="14" fill="#fff" stroke="#5b8db8" stroke-width="2"/>
+  <rect x="400" y="380" width="280" height="36" rx="14" fill="#5b8db8"/>
+  <rect x="400" y="398" width="280" height="18" fill="#5b8db8"/>
+  <text x="420" y="404" class="h">4. Records (rows)</text>
+  <text x="420" y="450" class="p">Acme Corp · Jane Doe</text>
+  <text x="420" y="478" class="p">Deal $50,000 · Stage=Proposal</text>
+  <text x="420" y="506" class="p">Case #1024 · Open</text>
+
+  <!-- Side callouts -->
+  <rect x="760" y="140" width="300" height="200" rx="14" fill="#fff" stroke="#0b5cab" stroke-width="2"/>
+  <text x="910" y="180" text-anchor="middle" class="label">METADATA</text>
+  <text x="780" y="215" class="p">The blueprint / shape</text>
+  <text x="780" y="245" class="m">Objects, fields, flows,</text>
+  <text x="780" y="268" class="m">page layouts, Apex&</text>
+  <text x="780" y="300" class="p">This is what DevOps</text>
+  <text x="780" y="323" class="p">mostly deploys.</text>
+
+  <rect x="760" y="380" width="300" height="200" rx="14" fill="#fff" stroke="#2e844a" stroke-width="2"/>
+  <text x="910" y="420" text-anchor="middle" class="label" fill="#2e844a">DATA</text>
+  <text x="780" y="455" class="p">The actual content</text>
+  <text x="780" y="485" class="m">Customer names, deals,</text>
+  <text x="780" y="508" class="m">tickets, emails&</text>
+  <text x="780" y="540" class="p">Moved with data tools,</text>
+  <text x="780" y="563" class="p">not change sets.</text>
+
+  <text x="40" y="640" class="m">Analogy: Org = office building · Objects = filing cabinets · Fields = form blanks · Records = filled-in forms</text>
+  <text x="40" y="670" class="m">DevOps cares most about moving the blueprint (metadata) safely from sandbox ’ production.</text>
+</svg>

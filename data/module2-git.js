@@ -24,11 +24,11 @@ flowchart LR
   WD -- "1. git add" --> ST
   ST -- "2. git commit" --> REPO
   REPO -. "git restore" .-> WD`,
-      diagramCaption: 'Today we only use the green LOCAL half. Push to Remote comes on Day 8.',
+      diagramCaption: 'Today we only use the green LOCAL half. Push to Remote comes on Day 11.',
       images: [
         {
           title: 'Classic Git Workflow chart (start here)',
-          text: 'Memorise the <b>four boxes</b> left to right: Working Directory → Staging Area → Local Repository → Remote Repository. Colour rows = command families (save, clone, undo, get changes, stash). Today you only use the first three boxes (Local). Remote is Day 8.',
+          text: 'Memorise the <b>four boxes</b> left to right: Working Directory → Staging Area → Local Repository → Remote Repository. Colour rows = command families (save, clone, undo, get changes, stash). Today you only use the first three boxes (Local). Remote is Day 11.',
           src: 'assets/images/git-workflow-reference.jpg',
           alt: 'Git Workflow chart showing Working Directory Staging Local Remote and commands between them',
           caption: 'Saving changes: git add → git commit → git push. Getting changes: git fetch → git merge (or git pull).',
@@ -39,7 +39,7 @@ flowchart LR
           text: 'Working Directory is where <code>sf project retrieve</code> drops metadata from a sandbox. Remote is the team source of truth on GitHub or Azure Repos — not the sandbox itself.',
           src: 'assets/images/git-workflow-salesforce.jpg',
           alt: 'Git Workflow for Salesforce DevOps infographic',
-          caption: 'Hang this next to your sandbox ↔ branch map (Day 11).'
+          caption: 'Hang this next to your sandbox ↔ branch map (Day 14).'
         },
         {
           title: 'Classroom poster (SVG — sharp on any screen)',
@@ -114,7 +114,7 @@ git log --oneline --graph` },
       concepts: [
         ['Working directory', 'The normal files you open in VS Code. Edit freely here.'],
         ['Staging area', 'A shopping basket of changes for the next commit. You can add only some files.'],
-        ['Local repository (.git)', 'The full history on your machine. Commits stay here until you push (Day 8).'],
+        ['Local repository (.git)', 'The full history on your machine. Commits stay here until you push (Day 11).'],
         ['HEAD', 'A pointer that says "you are currently looking at this commit / branch".']
       ],
       code: [{ title: 'Cheat sheet for today', src: `
@@ -136,7 +136,7 @@ git restore <file>       # discard unstaged edits` }],
         steps: [
           ['Create folder and init.', 'mkdir acme-salesforce && cd acme-salesforce\ngit init\ngit branch -M main'],
           ['Commit README.', 'echo "# Acme Salesforce" > README.md\ngit add README.md\ngit commit -m "docs: add README"'],
-          'Add <code>notes/environments.md</code> with your Day 2 environment ideas and commit.',
+          'Add <code>notes/environments.md</code> with your Day 5 environment ideas and commit.',
           'Edit README twice more; commit after each edit with clear messages.',
           ['Show the album.', 'git log --oneline --graph'],
           'Edit a file, then discard the edit with <code>git restore</code>.'
@@ -146,7 +146,7 @@ git restore <file>       # discard unstaged edits` }],
       },
       teach: [
         'Open the master poster full-screen first. Point to each of the four boxes before any commands.',
-        'Cover the Remote box with a sticky note for Day 6 — reveal it on Day 8.',
+        'Cover the Remote box with a sticky note today — reveal it on Day 11.',
         'Draw three boxes on the whiteboard and move sticky notes: Working → Staging → Repo.',
         'Say out loud: "Commit is NOT upload." Repeat until the class nods.',
         'Optional live demo of VS Code Source Control panel next to the terminal commands.'
@@ -214,7 +214,7 @@ git branch -d feature/PROJ-12-project-object   # delete only after merge` }
         },
         {
           title: 'Naming rules for Salesforce teams',
-          text: 'Use prefixes so pipelines and humans understand intent: <code>feature/</code>, <code>bugfix/</code>, <code>hotfix/</code>. Long-lived environment branches (<code>develop</code>, <code>uat</code>, <code>main</code>) come on Day 11.',
+          text: 'Use prefixes so pipelines and humans understand intent: <code>feature/</code>, <code>bugfix/</code>, <code>hotfix/</code>. Long-lived environment branches (<code>develop</code>, <code>uat</code>, <code>main</code>) come on Day 14.',
           tip: 'Never do large unfinished work directly on <code>main</code>. That is how releases break.'
         }
       ],
@@ -304,7 +304,7 @@ flowchart TB
 flowchart TB
   A["github.com → New repository"] --> B["Repository name: acme-salesforce"]
   B --> C["Owner: your username"]
-  C --> D{"Already have local commits<br/>from Day 6?"}
+  C --> D{"Already have local commits<br/>from Day 9?"}
   D -- "Yes" --> E["Visibility: Private or Public<br/>❌ Do NOT add README / .gitignore / license"]
   D -- "No (starting fresh)" --> F["✅ Add a README<br/>so the repo is not empty"]
   E --> G["Create repository"]
@@ -317,7 +317,7 @@ flowchart TB
           text: 'Both talk to the same repo. Credentials are the only difference.',
           diagram: `
 flowchart LR
-  subgraph REC["👍 Recommended for Day 8"]
+  subgraph REC["👍 Recommended for Day 11"]
     A["HTTPS + Personal Access Token<br/>+ Git Credential Manager"]
   end
   subgraph ADV["Later / power users"]
@@ -346,7 +346,7 @@ git config --global credential.helper manager
 # Older installs may use:
 # git config --global credential.helper wincred
 
-# Optional: confirm your identity (same as Day 6 setup)
+# Optional: confirm your identity (same as Day 9 setup)
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"` },
           warn: 'Never commit a PAT into a file or chat. If it leaks, revoke it immediately under the same GitHub settings page.'
@@ -380,7 +380,7 @@ ssh -T git@github.com
           tip: 'If <code>ssh -T</code> fails, check that you pasted the <code>.pub</code> file and that corporate firewall allows port 22 (sometimes you need SSH over HTTPS on port 443).'
         },
         {
-          title: 'Step 4 — Path A: You already have a local repo (Day 6) → connect & push',
+          title: 'Step 4 — Path A: You already have a local repo (Day 9) → connect & push',
           text: 'Use an <b>empty</b> GitHub repo (no README). This is the most common Salesforce class path.',
           diagram: `
 sequenceDiagram
@@ -492,7 +492,7 @@ git log --oneline -3` },
         ['HTTPS + PAT', 'URL starts with https://. Username = GitHub user. Password = token (ghp_…), never the login password.'],
         ['SSH', 'URL starts with git@github.com:. Auth uses a key pair. Public key lives on GitHub; private key stays on your machine.'],
         ['git clone', 'One command that downloads the repo, creates the folder, and sets origin. Use when starting from GitHub.'],
-        ['git remote add + push', 'Use when the folder already exists locally (Day 6 path).'],
+        ['git remote add + push', 'Use when the folder already exists locally (Day 9 path).'],
         ['git push / git pull', 'Upload your commits / download + merge remote commits. Daily habits for every Salesforce DevOps team.']
       ],
       code: [
@@ -528,7 +528,7 @@ git push -u origin main` }
         title: 'Full GitHub loop: create → credentials → clone OR connect → push/pull',
         goal: 'Prove you can create a GitHub repo, authenticate (HTTPS or SSH), and sync both directions.',
         steps: [
-          'Create GitHub repo <code>acme-salesforce</code>. If using Day 6 local folder: leave it empty (no README). If starting fresh: add a README.',
+          'Create GitHub repo <code>acme-salesforce</code>. If using Day 9 local folder: leave it empty (no README). If starting fresh: add a README.',
           'Set up credentials: create a classic PAT with <code>repo</code> scope <b>or</b> generate an SSH key and upload the <code>.pub</code> file. Test SSH with <code>ssh -T git@github.com</code> if you chose SSH.',
           ['Path A (existing local): add origin and push.', 'cd acme-salesforce\ngit remote add origin https://github.com/<YOU>/acme-salesforce.git\ngit push -u origin main'],
           ['Path B (fresh): clone into a new folder.', 'git clone https://github.com/<YOU>/acme-salesforce.git\ncd acme-salesforce'],
@@ -784,7 +784,7 @@ flowchart TB
       diagramCaption: 'One long-lived branch ↔ one shared environment. Feature branches are temporary and usually pair with a personal Dev sandbox or scratch org.',
       images: [
         {
-          title: 'How this connects to the Day 6 Git poster',
+          title: 'How this connects to the Day 9 Git poster',
           text: 'On the Git Workflow poster, <b>Remote Repository</b> holds branches (<code>develop</code>, <code>uat</code>, <code>main</code>). Each of those branches is what CI deploys into the matching sandbox below. The poster moves files inside Git; this map moves Git into Salesforce.',
           src: 'assets/images/git-workflow.svg',
           alt: 'Git Workflow poster linking remote repo to Salesforce environments',
@@ -1014,7 +1014,7 @@ server.key
           'Tag <code>v0.2.0</code> for Module 2 complete.'
         ],
         verify: 'Direct push rejected. PR path works. Ignore files present on main.',
-        challenge: 'Add a PR template referencing the Salesforce review checklist from Day 9.'
+        challenge: 'Add a PR template referencing the Salesforce review checklist from Day 12.'
       },
       teach: [
         'Module 2 assessment: give a broken repo (conflict + missing ignore + unprotected main) to fix in 30 minutes.',

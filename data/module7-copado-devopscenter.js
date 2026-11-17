@@ -23,7 +23,7 @@ flowchart LR
       concepts: [
         ['Where Copado runs', 'Copado is installed as a managed package in a Salesforce org (often production or a dedicated Copado org), with a backend that runs the Git and deploy jobs.'],
         ['Core records', '<b>Credential</b> (an authenticated org), <b>Environment</b>, <b>Git Repository</b>, <b>Pipeline</b> with Pipeline Connections (source → destination + branch), <b>Project</b>, <b>Release</b> and <b>User Story</b>.'],
-        ['Branch model', 'Environment branches (dev, qa, uat, main) plus a feature branch per user story. This is the "environment branches" strategy from Day 10.'],
+        ['Branch model', 'Environment branches (dev, qa, uat, main) plus a feature branch per user story. This is the "environment branches" strategy from Day 13.'],
         ['Concept mapping', 'User story ≈ feature branch + PR · Promotion ≈ merge + deploy job · Quality gate ≈ required status check · Back-promotion ≈ back-merge.']
       ],
       quiz: [
@@ -62,7 +62,7 @@ flowchart LR
         ['Validation', 'Run "Validate" on a user story or promotion (a check-only deploy) before promoting.'],
         ['Back-promotion', 'Pushes stories that are already in a higher environment down to other environments, which reduces drift and conflicts.']
       ],
-      pitfall: 'Committing whole Profiles from the Commit Changes page. Use Copado\'s permission handling features or commit permission sets instead, just as on Day 3.',
+      pitfall: 'Committing whole Profiles from the Commit Changes page. Use Copado\'s permission handling features or commit permission sets instead, just as on Day 6.',
       quiz: [
         ['What does a promotion contain?', ['One org credential', 'One or more user stories moving source → destination', 'A Git repo', 'A Copado license'], 1, 'Promotions batch stories for a hop.'],
         ['Why back-promote?', ['To delete stories', 'To keep lower environments in sync and avoid conflicts', 'To skip testing', 'Required by Salesforce'], 1, 'In-sync environments mean fewer surprise conflicts later.']

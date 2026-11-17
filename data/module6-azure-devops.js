@@ -115,7 +115,7 @@ flowchart LR
         verify: 'Direct pushes fail, and PRs show the policy checklist.',
         challenge: 'Create a branch security rule that only allows the release team to create <code>release/*</code> branches.'
       },
-      teach: ['Build validation is added on Day 42 once the pipeline exists.']
+      teach: ['Build validation is added on Day 45 once the pipeline exists.']
     },
     {
       t: 'Your First Azure YAML Pipeline',
@@ -236,7 +236,7 @@ steps:
         title: 'Authenticate from Azure Pipelines',
         goal: 'Log in to acme-dev (UAT) and acme-prod from ADO.',
         steps: [
-          'Pipelines → Library → Secure files: upload <code>server-uat.key</code> and <code>server-prod.key</code> (copies of your Day 18 keys).',
+          'Pipelines → Library → Secure files: upload <code>server-uat.key</code> and <code>server-prod.key</code> (copies of your Day 21 keys).',
           'Create variable groups <code>sf-uat</code> and <code>sf-prod</code> with SF_CLIENT_ID, SF_USERNAME and SF_INSTANCE_URL.',
           'Create <code>templates/steps/sf-auth.yml</code>.',
           ['Create a test pipeline that uses the group and template.', `variables:
@@ -344,7 +344,7 @@ jobs:
         verify: 'The PR shows the required check and blocks completion on failure.',
         challenge: 'Post a PR comment listing the delta components using the ADO REST API with <code>$(System.AccessToken)</code>.'
       },
-      teach: ['Compare it with Day 30 line by line. The concepts are identical and only the syntax differs.']
+      teach: ['Compare it with Day 33 line by line. The concepts are identical and only the syntax differs.']
     },
     {
       t: 'Multi-Stage CD with Environments, Approvals & Checks',

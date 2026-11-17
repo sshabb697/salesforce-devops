@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" role="img" aria-labelledby="title desc">
+  <title id="title">Salesforce Use Cases</title>
+  <desc id="desc">Six everyday business use cases for Salesforce explained in plain English.</desc>
+  <defs>
+    <style>
+      .title { font: 700 28px Segoe UI, Arial, sans-serif; fill: #1b2436; }
+      .sub { font: 600 14px Segoe UI, Arial, sans-serif; fill: #5d6b82; }
+      .h { font: 700 16px Segoe UI, Arial, sans-serif; fill: #1b2436; }
+      .p { font: 13px Segoe UI, Arial, sans-serif; fill: #5d6b82; }
+      .tag { font: 700 12px Segoe UI, Arial, sans-serif; fill: #fff; }
+    </style>
+  </defs>
+  <rect width="1100" height="720" fill="#f5f7fb"/>
+  <text x="40" y="42" class="title">Salesforce Use Cases (plain English)</text>
+  <text x="40" y="68" class="sub">Same platform, different jobs  sales, support, marketing, shops, reports and custom apps</text>
+
+  <!-- Card 1 -->
+  <rect x="40" y="100" width="320" height="250" rx="16" fill="#fff" stroke="#0b5cab" stroke-width="2"/>
+  <rect x="40" y="100" width="320" height="36" rx="16" fill="#0b5cab"/>
+  <rect x="40" y="118" width="320" height="18" fill="#0b5cab"/>
+  <text x="56" y="124" class="tag">1 · SALES</text>
+  <text x="60" y="170" class="h">Close deals faster</text>
+  <text x="60" y="200" class="p">Track every lead and</text>
+  <text x="60" y="222" class="p">opportunity in one pipeline.</text>
+  <text x="60" y="255" class="p">Example: "Acme deal is in</text>
+  <text x="60" y="277" class="p">Proposal  next step: demo."</text>
+  <text x="60" y="315" class="p">Clouds: Sales Cloud</text>
+
+  <!-- Card 2 -->
+  <rect x="390" y="100" width="320" height="250" rx="16" fill="#fff" stroke="#2e844a" stroke-width="2"/>
+  <rect x="390" y="100" width="320" height="36" rx="16" fill="#2e844a"/>
+  <rect x="390" y="118" width="320" height="18" fill="#2e844a"/>
+  <text x="406" y="124" class="tag">2 · SERVICE</text>
+  <text x="410" y="170" class="h">Fix problems quickly</text>
+  <text x="410" y="200" class="p">Turn emails and chats into</text>
+  <text x="410" y="222" class="p">Cases with owners &amp; SLAs.</text>
+  <text x="410" y="255" class="p">Example: "Case #1024 </text>
+  <text x="410" y="277" class="p">login issue  High priority."</text>
+  <text x="410" y="315" class="p">Clouds: Service Cloud</text>
+
+  <!-- Card 3 -->
+  <rect x="740" y="100" width="320" height="250" rx="16" fill="#fff" stroke="#c47a00" stroke-width="2"/>
+  <rect x="740" y="100" width="320" height="36" rx="16" fill="#c47a00"/>
+  <rect x="740" y="118" width="320" height="18" fill="#c47a00"/>
+  <text x="756" y="124" class="tag">3 · MARKETING</text>
+  <text x="760" y="170" class="h">Reach the right people</text>
+  <text x="760" y="200" class="p">Send campaigns and track</text>
+  <text x="760" y="222" class="p">who opens, clicks, buys.</text>
+  <text x="760" y="255" class="p">Example: webinar invite to</text>
+  <text x="760" y="277" class="p">all open Opportunities.</text>
+  <text x="760" y="315" class="p">Clouds: Marketing Cloud</text>
+
+  <!-- Card 4 -->
+  <rect x="40" y="380" width="320" height="250" rx="16" fill="#fff" stroke="#5b8db8" stroke-width="2"/>
+  <rect x="40" y="380" width="320" height="36" rx="16" fill="#5b8db8"/>
+  <rect x="40" y="398" width="320" height="18" fill="#5b8db8"/>
+  <text x="56" y="404" class="tag">4 · COMMERCE</text>
+  <text x="60" y="450" class="h">Sell online smoothly</text>
+  <text x="60" y="480" class="p">Catalog, cart, checkout and</text>
+  <text x="60" y="502" class="p">orders linked to customers.</text>
+  <text x="60" y="535" class="p">Example: order history shows</text>
+  <text x="60" y="557" class="p">up on the Account page.</text>
+  <text x="60" y="595" class="p">Clouds: Commerce Cloud</text>
+
+  <!-- Card 5 -->
+  <rect x="390" y="380" width="320" height="250" rx="16" fill="#fff" stroke="#1f7a6c" stroke-width="2"/>
+  <rect x="390" y="380" width="320" height="36" rx="16" fill="#1f7a6c"/>
+  <rect x="390" y="398" width="320" height="18" fill="#1f7a6c"/>
+  <text x="406" y="404" class="tag">5 · ANALYTICS</text>
+  <text x="410" y="450" class="h">See the big picture</text>
+  <text x="410" y="480" class="p">Dashboards for pipeline,</text>
+  <text x="410" y="502" class="p">case volume and revenue.</text>
+  <text x="410" y="535" class="p">Example: "Win rate dropped</text>
+  <text x="410" y="557" class="p">in the West region."</text>
+  <text x="410" y="595" class="p">Clouds: Tableau / CRM Analytics</text>
+
+  <!-- Card 6 -->
+  <rect x="740" y="380" width="320" height="250" rx="16" fill="#fff" stroke="#b85c38" stroke-width="2"/>
+  <rect x="740" y="380" width="320" height="36" rx="16" fill="#b85c38"/>
+  <rect x="740" y="398" width="320" height="18" fill="#b85c38"/>
+  <text x="756" y="404" class="tag">6 · CUSTOM APPS</text>
+  <text x="760" y="450" class="h">Build what you need</text>
+  <text x="760" y="480" class="p">HR onboarding, inventory,</text>
+  <text x="760" y="502" class="p">partner portals  your way.</text>
+  <text x="760" y="535" class="p">Example: Project__c object</text>
+  <text x="760" y="557" class="p">+ Flow for approvals.</text>
+  <text x="760" y="595" class="p">Tools: Flow, Apex, LWC, AppExchange</text>
+</svg>

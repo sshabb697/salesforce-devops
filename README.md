@@ -1,6 +1,6 @@
-# Salesforce DevOps Mastery — 60 Day Interactive Course
+# Salesforce DevOps Mastery — Interactive Course
 
-Interactive course for Salesforce professionals (~5 years experience). Each of the 60 days has objectives, a plain-English analogy, diagrams/images, concepts + code, a quiz, a lab, and trainer notes.
+Interactive course for Salesforce professionals and non-IT learners. Module 1 starts with what Salesforce is, use cases, and building blocks; then you move into DevOps. Each day has objectives, a plain-English analogy, diagrams/images, concepts + code, a quiz, a lab, and trainer notes.
 
 Progress, quiz answers, lab checkboxes and notes are saved in each student's browser (localStorage).
 

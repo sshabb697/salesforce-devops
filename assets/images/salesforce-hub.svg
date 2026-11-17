@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" role="img" aria-labelledby="title desc">
+  <title id="title">What is Salesforce?</title>
+  <desc id="desc">Salesforce as a customer hub with Sales, Service, Marketing, Commerce, Analytics and Apps surrounding it.</desc>
+  <defs>
+    <style>
+      .title { font: 700 28px Segoe UI, Arial, sans-serif; fill: #1b2436; }
+      .sub { font: 600 14px Segoe UI, Arial, sans-serif; fill: #5d6b82; }
+      .h { font: 700 16px Segoe UI, Arial, sans-serif; fill: #1b2436; }
+      .p { font: 13px Segoe UI, Arial, sans-serif; fill: #5d6b82; }
+      .w { font: 700 14px Segoe UI, Arial, sans-serif; fill: #fff; }
+      .c { font: 700 18px Segoe UI, Arial, sans-serif; fill: #fff; }
+    </style>
+  </defs>
+  <rect width="1100" height="720" fill="#f5f7fb"/>
+  <text x="40" y="42" class="title">What is Salesforce?</text>
+  <text x="40" y="68" class="sub">A cloud toolbox companies use to know their customers and run everyday work</text>
+
+  <ellipse cx="550" cy="370" rx="150" ry="110" fill="#0b5cab"/>
+  <text x="550" y="355" text-anchor="middle" class="c">Your company</text>
+  <text x="550" y="382" text-anchor="middle" class="c">customer hub</text>
+  <text x="550" y="410" text-anchor="middle" class="w">Salesforce cloud</text>
+
+  <g>
+    <rect x="80" y="140" width="220" height="100" rx="14" fill="#fff" stroke="#0b5cab" stroke-width="2"/>
+    <text x="190" y="180" text-anchor="middle" class="h">Sales</text>
+    <text x="190" y="205" text-anchor="middle" class="p">Track leads &amp; deals</text>
+  </g>
+  <g>
+    <rect x="800" y="140" width="220" height="100" rx="14" fill="#fff" stroke="#0b5cab" stroke-width="2"/>
+    <text x="910" y="180" text-anchor="middle" class="h">Service</text>
+    <text x="910" y="205" text-anchor="middle" class="p">Help customers faster</text>
+  </g>
+  <g>
+    <rect x="80" y="320" width="220" height="100" rx="14" fill="#fff" stroke="#2e844a" stroke-width="2"/>
+    <text x="190" y="360" text-anchor="middle" class="h">Marketing</text>
+    <text x="190" y="385" text-anchor="middle" class="p">Send the right message</text>
+  </g>
+  <g>
+    <rect x="800" y="320" width="220" height="100" rx="14" fill="#fff" stroke="#2e844a" stroke-width="2"/>
+    <text x="910" y="360" text-anchor="middle" class="h">Commerce</text>
+    <text x="910" y="385" text-anchor="middle" class="p">Sell online &amp; in store</text>
+  </g>
+  <g>
+    <rect x="80" y="500" width="220" height="100" rx="14" fill="#fff" stroke="#c47a00" stroke-width="2"/>
+    <text x="190" y="540" text-anchor="middle" class="h">Analytics</text>
+    <text x="190" y="565" text-anchor="middle" class="p">See what is working</text>
+  </g>
+  <g>
+    <rect x="800" y="500" width="220" height="100" rx="14" fill="#fff" stroke="#c47a00" stroke-width="2"/>
+    <text x="910" y="540" text-anchor="middle" class="h">Apps &amp; automation</text>
+    <text x="910" y="565" text-anchor="middle" class="p">Build custom workflows</text>
+  </g>
+
+  <line x1="300" y1="190" x2="420" y2="320" stroke="#9ec2e8" stroke-width="3"/>
+  <line x1="800" y1="190" x2="680" y2="320" stroke="#9ec2e8" stroke-width="3"/>
+  <line x1="300" y1="370" x2="400" y2="370" stroke="#9ad0b0" stroke-width="3"/>
+  <line x1="800" y1="370" x2="700" y2="370" stroke="#9ad0b0" stroke-width="3"/>
+  <line x1="300" y1="550" x2="420" y2="430" stroke="#e8c48a" stroke-width="3"/>
+  <line x1="800" y1="550" x2="680" y2="430" stroke="#e8c48a" stroke-width="3"/>
+
+  <rect x="300" y="640" width="500" height="48" rx="10" fill="#e7f1fb" stroke="#9ec2e8"/>
+  <text x="550" y="670" text-anchor="middle" class="p">One shared picture of the customer  used by sales, support, marketing and ops</text>
+</svg>

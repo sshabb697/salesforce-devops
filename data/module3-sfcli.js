@@ -79,7 +79,7 @@ sf project retrieve start            # retrieve tracked changes` }],
       ],
       lab: {
         title: 'Bring Project__c into Git',
-        goal: 'Retrieve the metadata you built on Day 3 and commit it.',
+        goal: 'Retrieve the metadata you built on Day 6 and commit it.',
         steps: [
           'Retrieve <code>CustomObject:Project__c</code> and <code>PermissionSet:Project_User</code>.',
           'Inspect the decomposed folder structure in VS Code.',
@@ -164,7 +164,7 @@ private class ProjectServiceTest {
     {
       t: 'Manifest Deployments & Destructive Changes',
       mins: 90, level: 'Intermediate', tags: ['destructive-changes', 'package.xml', 'delete'],
-      obj: ['Delete metadata with destructiveChanges (pre and post)', 'Build release manifests', 'Compare a CLI deploy against the Day 4 change set'],
+      obj: ['Delete metadata with destructiveChanges (pre and post)', 'Build release manifests', 'Compare a CLI deploy against the Day 7 change set'],
       analogy: { icon: '🗑️', text: 'A normal deploy says "add or update these things". Destructive changes are a removal list: "take these things out". Pre-destructive removes things before the new things arrive, like clearing a shelf before restocking. Post-destructive removes them after, like taking away old signs once new ones are up.' },
       diagram: `
 flowchart LR
@@ -198,12 +198,12 @@ sf project deploy start --manifest manifest/package.xml \\
           'Remove the reference from Apex.',
           'Create <code>destructiveChangesPost.xml</code> that lists the field.',
           'Validate, then deploy to acme-prod with the post-destructive manifest.',
-          'Time the whole flow and compare it with your Day 4 change set timing.'
+          'Time the whole flow and compare it with your Day 7 change set timing.'
         ],
         verify: 'The field is gone from acme-prod (check the Object Manager and Deleted Fields).',
         challenge: 'Try the same with pre-destructive and explain the error you get.'
       },
-      teach: ['Write the Day 4 vs Day 16 times on the board. The comparison is a strong motivator.']
+      teach: ['Write the Day 7 vs Day 19 times on the board. The comparison is a strong motivator.']
     },
     {
       t: 'Scratch Orgs & Dev Hub',
@@ -299,7 +299,7 @@ sf org login jwt --client-id <CONSUMER_KEY> --jwt-key-file server.key \\
       ],
       lab: {
         title: 'Headless login to acme-prod',
-        goal: 'Authenticate with JWT, exactly as CI will from Day 29 onward.',
+        goal: 'Authenticate with JWT, exactly as CI will from Day 32 onward.',
         steps: [
           'Generate server.key and server.crt with OpenSSL (outside your repo folder).',
           'Create the app: Setup → App Manager → New Connected App (or External Client App). Enable OAuth with callback <code>http://localhost:1717/OauthRedirect</code>, select "Use digital signatures", upload server.crt and add the scopes.',

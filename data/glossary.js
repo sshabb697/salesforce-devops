@@ -5,7 +5,7 @@ COURSE.setup = {
   items: [
     ['Salesforce Developer Edition org (x2)', 'Sign up at <a href="https://developer.salesforce.com/signup" target="_blank">developer.salesforce.com/signup</a>. One org will act as "Dev", the other as "Prod". Also enable <b>Dev Hub</b> in one of them (Setup → Dev Hub).'],
     ['Git', 'Install from <a href="https://git-scm.com" target="_blank">git-scm.com</a>, then configure your identity.', 'git config --global user.name "Your Name"\ngit config --global user.email "you@example.com"\ngit config --global init.defaultBranch main'],
-    ['Node.js LTS + Salesforce CLI', 'Install Node.js LTS from <a href="https://nodejs.org" target="_blank">nodejs.org</a>, then install the CLI.', 'npm install --global @salesforce/cli\nsf --version\nsf plugins install code-analyzer      # used from Day 22\nsf plugins install sfdx-git-delta     # used from Day 25'],
+    ['Node.js LTS + Salesforce CLI', 'Install Node.js LTS from <a href="https://nodejs.org" target="_blank">nodejs.org</a>, then install the CLI.', 'npm install --global @salesforce/cli\nsf --version\nsf plugins install code-analyzer      # used from Day 25\nsf plugins install sfdx-git-delta     # used from Day 28'],
     ['VS Code + Salesforce Extension Pack', 'Install VS Code and the "Salesforce Extension Pack (Expanded)" extension.'],
     ['GitHub account', 'Free account at <a href="https://github.com" target="_blank">github.com</a>. GitHub Actions minutes are free for public repos.'],
     ['Azure DevOps organization', 'Free at <a href="https://dev.azure.com" target="_blank">dev.azure.com</a>. Request the free parallel job grant for private projects (it can take 2–3 business days, so do it early!).'],
@@ -15,6 +15,16 @@ COURSE.setup = {
 };
 
 COURSE.glossary = [
+  ['Salesforce', 'A cloud CRM and app platform where companies manage customers, deals, service cases, marketing and custom business processes in one shared system.'],
+  ['CRM', 'Customer Relationship Management — keeping a shared record of who customers are, what happened with them, and what should happen next.'],
+  ['Cloud (business meaning)', 'Software you use over the internet in a browser or app. The vendor hosts it; your company does not install a giant program on every laptop.'],
+  ['Object', 'A type of thing you track in Salesforce — like a table. Examples: Account (companies), Contact (people), Case (support tickets).'],
+  ['Field', 'A single piece of information on an object — like a column. Examples: Name, Email, Amount, Status.'],
+  ['Record', 'One real example of an object — like a row. Example: the Account record for "Acme Corp".'],
+  ['Flow', 'Salesforce\'s click-based automation tool. Admins build if-this-then-that processes without writing traditional code.'],
+  ['Apex', 'Salesforce\'s programming language (similar to Java) used when clicks are not enough — complex logic, integrations, automated tests.'],
+  ['LWC (Lightning Web Components)', 'Modern UI building blocks (web components) developers use to create custom screens in Salesforce.'],
+  ['Admin (Salesforce)', 'A builder who mostly configures with clicks: objects, fields, flows, security, page layouts.'],
   ['DevOps', 'A way of working where the people who build software and the people who release it work as one team, using automation so changes reach users quickly and safely.'],
   ['Org', 'A single Salesforce environment (like a separate copy of the Salesforce app) with its own data, users and configuration.'],
   ['Sandbox', 'A copy of your production org used for building and testing, so mistakes do not affect real users.'],
